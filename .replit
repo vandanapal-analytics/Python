@@ -28,3 +28,6 @@ requiredFiles = [".replit", "replit.nix", ".config", "venv"]
 
 [agent]
 expertMode = true
+
+[deployment]
+deploymentTarget = "cloudrun"

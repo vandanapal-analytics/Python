@@ -1,5 +1,3 @@
-print("hello world")
-print(" Here , all topics for a data analysis")
 #  first Python code & Comments
 print("Hello World!")  # This prints a message to the screen
 
@@ -8,10 +6,12 @@ name = "Vandana"       # String (Text)
 age = 17            # Integer (Whole number)
 price = 99.99        # Float (Decimal number)
 is_coding = True     # Boolean (True/False)
+print(type(name))
 
 # Typecasting (Converting one type to another)
 x = "5"
 y = "10"
+print(x + y)        # Output: 510 (Strings are concatenated)
 print(int(x) + int(y))  # Output: 15 (Converted strings to integers to add them)
 
 # Taking User Input
@@ -24,10 +24,28 @@ print(fruit[0:3])  # Output: Man (Starts at index 0, goes up to but not includin
 print(len(fruit))  # Output: 5 (Length of the string)
 
 # String Methods
-text = "  hey harry!  "
-print(text.upper())        # "  HEY HARRY!  " (Converts to uppercase)
-print(text.strip())        # "hey harry!" (Removes extra spaces from sides)
-print(text.replace("hey", "hi")) # "  hi harry!  " (Replaces words)
+text = "  hey vandana!  "
+print(text.upper())        # "  HEY VANDANA!  " (Converts to uppercase)
+print(text.lower())        # "  hey vandana!  " (Converts to lowercase)
+print(text.capitalize())   # "  hey vandana!  " (Capitalizes the first letter)
+print(text.count("v"))     # 1 (Counts occurrences of "v")
+print(text.endswith("!"))   # True (Checks if the string ends with "!")
+print(text.find("Vandana"))   # 5 (Finds the starting index of "harry")
+print(text.isalnum())      # False (Checks if all characters are alphanumeric)
+print(text.isalpha())      # False (Checks if all characters are alphabetic)
+print(text.islower())      # False (Checks if all characters are lowercase)
+print(text.isprintable())    # True (Checks if all characters are printable)
+print(text.isspace())      # False (Checks if all characters are whitespace)
+print(text.istitle())      # False (Checks if the string is a title)
+print(text.startswith("hey")) # True (Checks if the string starts with "hey")
+print(text.swapcase())     # "  HEY VANDANA!  " (Swaps uppercase and lowercase)
+print(text.title())        # "  Hey Vandana!  " (Capitalizes the first letter of each word)
+print(text.split(" "))     # ['', 'hey', 'Vandana!', ''] (Splits the string by spaces)
+print(text.strip())        # "hey Vandana!" (Removes extra spaces from sides)
+print(text.rstrip())       # "  hey Vandana!" (Removes extra spaces from the right)
+print(text.lstrip())       # "hey Vandana!  " (Removes extra spaces from the left)
+print(text.replace("hey", "hi"))     # "  hi Vandana !  " (Replaces words)      
+
 
 # If, Else
 age = int(input("Enter your age: "))
@@ -84,10 +102,29 @@ for number in range(1, 6):
 def calculate_gmean(a, b):
     mean = (a * b) / (a + b)
     print("The geometric mean is:", mean)
+    return mean
+def is_greater(a, b) :
+    if(a>b):
+        print("First number is greater")
+        return True
+    else :
+        print("Second number is greater")
+        return False
+def is_lesser(a, b) :
+    pass
+def average(*numbers) :
+    sum = 0
+    for i in numbers :
+        sum = sum + i
+    return sum / len(numbers)
 
 # Calling the function with different values
 calculate_gmean(9, 8)
-calculate_gmean(4, 5)
+is_greater(4, 5)
+is_lesser(4, 5)
+c = average(5, 6, 7, 1)
+print(c)
+
 
 # Introduction to Lists
 marks = [75, 82, 94, 65]
@@ -97,7 +134,17 @@ print(marks[2])  # Output: 94 (Index starts at 0)
 marks.append(99)   # Adds 99 to the end of the list
 marks.sort()       # Sorts the list in ascending order
 marks.reverse()    # Reverses the order of items
+marks.insert(2, 88) # Inserts 88 at index 2
+marks.pop(1)       # Removes the item at index 1
+marks.remove(65)    # Removes the first occurrence of 65
+marks.clear()       # Removes all items from the list
+marks.extend([70, 80, 90])  # Adds multiple items to the list
+marks[0] = 100  # Updates the first item to 100
+marks[1:3] = [200, 300]  # Updates items from index 1 to 2
+marks[1:3] = [200, 300, 400]  # Updates items from index 1 to 2 and adds a new item
+marks[1:3] = []  # Removes items from index 1 to 2
 print("Updated List:", marks)
+
 
 # Tuples (Use parenthesis instead of square brackets)
 coordinates = (10, 20, 30)
@@ -110,9 +157,16 @@ temp_list.append(40)
 coordinates = tuple(temp_list)
 print("Updated Tuple:", coordinates)
 
+# Concatenation
+tuple1 = (1, 2, 3)
+tuple2 = (4, 5, 6)
+combined_tuple = tuple1 + tuple2
+print("Combined Tuple:", combined_tuple)
+
+
 # Introduction to Dictionaries
 student_info = {
-    "name": "Harry",
+    "name": "Rohan",
     "age": 25,
     "city": "New York"
 }
@@ -120,14 +174,14 @@ print(student_info["name"])
 print(student_info.get("age"))
 # Dictionary Methods
 student_info["age"] = 26  # Updates the age
-student_info["country"] = "USA"  # Adds a new key-value pair
+student_info["city"] = "USA"  # Adds a new key-value pair
 print(student_info)
-
+# let we have data of 2 employees
 ep1 = {122: 45, 123: 89, 567: 69, 670: 69}
 ep2 = {222: 67, 566: 90}
 
 ep1.update (ep2)
-ep1.clear()
+#ep1.clear()
 ep1.pop(122)
 del ep1[123]
 print(ep1)
@@ -135,34 +189,54 @@ print(ep1)
 # File Handling
 
 # Open a file in read mode
-with open('example.txt', 'r') as file:
+# before running this code make sure that you have created a file named myfile.txt in the same directory as this Python file.
+f = open('myfile.txt', 'r')
+print(f)
+text = f.read()
+print(text)
+f.close()
+# Open a file in write mode
+f = open('myfile.txt', 'w')
+f.write("Hello, World!")
+f.close()
+# Open a file in append mode
+f = open('myfile.txt', 'a')    
+f.write("\nAppending a new line.")
+f.close()
+
+# Using 'with' statement (automatically closes the file)
+
+with open('myfile.txt', 'r') as file:
    content = file.read()
    print(content)
    # Open a file in write mode
-with open('example.txt', 'w') as file:
+with open('myfilee.txt', 'w') as file:
    file.write("Hello, World!")
    # Open a file in append mode
-with open('example.txt', 'a') as file:
+with open('myfile.txt', 'a') as file:
    file.write("\nAppending a new line.")
   
-# Create a file named 'marks.txt' with the following content:
+# Create a file named 'myfile.txt' with the following content:
 
 # Open the file in read mode
-with open('marks.txt', 'r') as f:
+with open('myfile.txt', 'r') as f:
+    # use a loop to read the file line by line
+    for line in f:
+        print(line.strip(","))
+        
     while True:
         line = f.readline()
         if not line:
             break # Stop when the file ends
+        print(line.strip(","))
 
-          
+# let we have marks of 3 students
+
 m1 = 70,80,90
 m2 = 65,75,85
 m3 = 50,60,70
-        # Split the line by commas to get individual marks
-m1 = line.split(",")[0]
-m2 = line.split(",")[1]
-m3 = line.split(",")[2]
-print(f"Student Marks: {m1}, {m2}, {m3.strip()}")
+        
+print(f"Student Marks: {m1}, {m2}, {m3}")
 
 lines_list = ['Line 1\n', 'Line 2\n', 'Line 3\n']
 # Open file in write mode ('w')
@@ -188,93 +262,4 @@ else:
 
   
 
-   #  Lambda Functions
-double = lambda x: x * 2
-print(double(5))  # Output: 10
-
-   # Filter, Reduce
-numbers = [1, 2, 3, 4, 5]
-squared = list(map(lambda x: x**2, numbers))
-print(squared)  # Output: [1, 4, 9, 16, 25]
-   # is vs ==
-a = [1, 2, 3]
-b = [1, 2, 3]
-print(a == b)  # True (Values are equal)
-print(a is b)  # False (Different objects in memory)
    
-
-# 1. Create the decorator function
-def greet_decorator(original_function):
-    def modified_function():
-        print("Hello! Good Morning.") # Extra behavior before
-        original_function()           # Running the actual function
-        print("Thanks for using this function.\n") # Extra behavior after
-    return modified_function
-
-# 2. Use the decorator using the @ symbol
-@greet_decorator
-def hello():
-    print("I am Harry.")
-
-@greet_decorator
-def main_work():
-    print("I am writing code.")
-
-# 3. Call the functions
-hello()
-main_work()
-
-class Employee:
-  def __init__(self, name, base_salary):
-      self.name = name
-      self._salary = base_salary # Internal variable
-
-  # GETTER: Allows us to read the salary like a property, not a method
-  @property
-  def total_salary(self):
-      return self._salary
-
-  # SETTER: Allows us to safely update the salary with conditions
-  @total_salary.setter
-  def total_salary(self, new_salary):
-      if new_salary < 0:
-          print("Error: Salary cannot be negative!")
-      else:
-          self._salary = new_salary
-
-# Using the class
-emp = Employee("Rohan", 50000)
-
-# Calling the Getter (Notice: No brackets () used here)
-print(f"{emp.name}'s salary is: {emp.total_salary}") 
-
-# Calling the Setter to change the value
-emp.total_salary = 60000
-print(f"Updated salary: {emp.total_salary}")
-
-# Testing validation
-emp.total_salary = -1000 # Prints error message
-
-# Parent Class
-class Employee:
-    def __init__(self, name, id):
-        self.name = name
-        self.id = id
-
-    def show_details(self):
-        print(f"The Employee ID is {self.id} and Name is {self.name}")
-
-# Child Class (Inherits from Employee)
-class Programmer(Employee):
-    def show_language(self):
-        print("The default language is Python")
-
-
-# 1. Creating an object of the Parent Class
-e1 = Employee("Harry", 400)
-e1.show_details()
-
-# 2. Creating an object of the Child Class
-e2 = Programmer("Lovish", 412)
-e2.show_details()    # Works because Programmer inherited this from Employee!
-e2.show_language()   # Works because this belongs to Programmer
